@@ -2,29 +2,62 @@
     {
         "step": 1,
         "action": "User Query",
-        "input": "What is blockchain governance",
+        "input": "What does sejal name mean?",
         "output": "Accepted",
-        "timestamp": 1772731949.8875399
+        "timestamp": 1772806765.0708404
     },
     {
         "step": 2,
-        "action": "Query Decomposition",
-        "input": "What is blockchain governance",
-        "output": "Explain What is blockchain governance",
-        "timestamp": 1772731949.8875477
+        "action": "Planner Agent",
+        "input": "What does sejal name mean?",
+        "output": [
+            "What is What does sejal name mean??",
+            "How does What does sejal name mean? work?",
+            "Examples of What does sejal name mean?"
+        ],
+        "timestamp": 1772806765.070848
     },
     {
         "step": 3,
-        "action": "Tool Execution",
-        "input": "Explain What is blockchain governance",
-        "output": "No good result found",
-        "timestamp": 1772731951.194916
+        "action": "Research Agent",
+        "input": "What is What does sejal name mean??",
+        "output": "No good result found for: what does sejal name mean",
+        "timestamp": 1772806766.7427776
     },
     {
         "step": 4,
+        "action": "Research Agent",
+        "input": "How does What does sejal name mean? work?",
+        "output": "No good result found for: what does sejal name mean work",
+        "timestamp": 1772806768.1723666
+    },
+    {
+        "step": 5,
+        "action": "Research Agent",
+        "input": "Examples of What does sejal name mean?",
+        "output": "No good result found for: what does sejal name mean",
+        "timestamp": 1772806769.4604833
+    },
+    {
+        "step": 6,
+        "action": "Verification Agent",
+        "input": [
+            "No good result found for: what does sejal name mean",
+            "No good result found for: what does sejal name mean work",
+            "No good result found for: what does sejal name mean"
+        ],
+        "output": "Confidence 90%",
+        "timestamp": 1772806769.4605236
+    },
+    {
+        "step": 7,
         "action": "Final Report Generated",
-        "input": "No good result found",
-        "output": "Research Result:\n\nNo good result found",
-        "timestamp": 1772731951.194918
+        "input": [
+            "No good result found for: what does sejal name mean",
+            "No good result found for: what does sejal name mean work",
+            "No good result found for: what does sejal name mean"
+        ],
+        "output": "### Definition\nNo good result found for: what does sejal name mean\n\n### How it Works\nNo good result found for: what does sejal name mean work\n\n### Examples\nNo good result found for: what does sejal name mean",
+        "timestamp": 1772806769.4605463
     }
 ]
