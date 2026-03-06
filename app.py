@@ -8,14 +8,15 @@ from blockchain import store_on_chain
 
 
 st.title("Fantastic WEB4 AI")
+st.write("A multi-agent AI research system with verifiable audit trails and blockchain anchoring.")
 
 query = st.text_input("Enter your research question")
 
 if st.button("Run AI Agent"):
 
     agent = ResearchSystem()
-
-    report, logs, confidence = agent.run(query)
+    with st.spinner("AI agents are researching..."):
+        report, logs, confidence = agent.run(query)
 
     st.subheader("Research Report")
     st.write(report)
