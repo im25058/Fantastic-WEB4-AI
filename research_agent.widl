@@ -1,0 +1,13 @@
+package fantastic_ai;
+
+interface ResearchAgent {
+
+    // User sends a research query
+    getResearchReport(query: string) -> string
+
+    // Verify that a report hash exists on blockchain
+    verifyReport(hash: string) -> bool
+
+    // Retrieve audit log
+    getAuditLog(execution_id: string) -> string
+}
