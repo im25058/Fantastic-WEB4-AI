@@ -3,7 +3,7 @@ import urllib.parse
 
 def web_search(query):
 
-    # Clean query
+    # clean query
     query = query.lower()
     query = query.replace("what is", "")
     query = query.replace("how does", "")
@@ -23,13 +23,12 @@ def web_search(query):
         response = requests.get(url, headers=headers)
 
         if response.status_code == 200:
-
             data = response.json()
 
             if "extract" in data:
                 return data["extract"]
 
-        return f"No good result found for: {query}"
+        return "No good result found"
 
     except Exception as e:
-        return f"Search error: {str(e)}"
+        return "Search failed"

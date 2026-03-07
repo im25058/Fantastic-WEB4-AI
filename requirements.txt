@@ -1,6 +1,6 @@
 streamlit
 requests
+graphviz
 langchain
 openai
 python-dotenv
-graphviz
