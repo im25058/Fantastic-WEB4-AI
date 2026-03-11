@@ -11,3 +11,12 @@ interface ResearchAgent {
     // Retrieve audit log
     getAuditLog(execution_id: string) -> string
 }
+package fantastic_ai;
+
+interface ResearchAgent {
+
+    runResearch(query: string) -> string
+
+    verifyReport(hash: string) -> bool
+
+}

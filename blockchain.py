@@ -1,7 +1,7 @@
 import json
 
 
-def store_on_chain(execution_id, report_hash):
+def store_on_chain(execution_id,report_hash):
 
     data = {
 
@@ -15,3 +15,10 @@ def store_on_chain(execution_id, report_hash):
         json.dump(data, f, indent=4)
 
     return "Stored on Weilchain (simulated)"
+def verify_hash(input_hash):
+    with open("blockchain_record.json", "r") as f:
+        data = json.load(f)
+
+    stored_hash = data["report_hash"]
+    return stored_hash == input_hash
+

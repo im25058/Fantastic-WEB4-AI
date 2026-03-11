@@ -74,3 +74,10 @@ class ResearchSystem:
         logs = self.logger.save_logs()
 
         return final_report, logs, confidence
+    def runResearch(self, query):
+        report, logs, confidence = self.run(query)
+        return report
+
+    def verifyReport(self, hash_value):
+        stored_hash = self.blockchain.get_hash()
+        return hash_value == stored_hash

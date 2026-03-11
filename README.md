@@ -14,5 +14,33 @@ Features
 How to run
 pip install -r requirements.txt
 streamlit run app.py
+WeilChain Applet Interface
 
+This project defines a WeilChain smart applet using WIDL.
+
+File:
+research_agent.widl
+
+Functions:
+
+runResearch(query)
+Generates a research report using AI agents.
+
+verifyReport(hash)
+Verifies the integrity of the report using a blockchain anchored hash.
+User
+ ↓
+Streamlit UI
+ ↓
+Research Agent
+ ↓
+Web Search
+ ↓
+AI Report Generation
+ ↓
+Hash Generation
+ ↓
+WeilChain Anchor
+ ↓
+Verification Certificate
 

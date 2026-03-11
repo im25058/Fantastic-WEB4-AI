@@ -4,7 +4,7 @@ import datetime
 
 from agent import ResearchSystem
 from hash_utils import generate_hash
-from blockchain import store_on_chain
+from blockchain import store_on_chain,verify_hash
 
 
 st.title("Fantastic WEB4 AI")
@@ -17,31 +17,38 @@ if st.button("Run AI Agent"):
     agent = ResearchSystem()
     with st.spinner("AI agents are researching..."):
         report, logs, confidence = agent.run(query)
+        execution_id = str(uuid.uuid4())
 
-    st.subheader("Research Report")
-    st.write(report)
+        report_hash = generate_hash(report)
 
-    st.subheader("Verification Result")
-    st.write("Confidence Score:", confidence, "%")
+        store_on_chain(execution_id, report_hash)
 
-    report_hash = generate_hash(report)
+        st.session_state["report_hash"] = report_hash
 
-    execution_id = str(uuid.uuid4())
+        st.subheader("Research Report")
+        st.write(report)
 
-    tx = store_on_chain(execution_id, report_hash)
+        st.subheader("Verification Result")
+        st.write("Confidence Score:", confidence, "%")
 
-    st.subheader("Verification")
+        report_hash = generate_hash(report)
 
-    st.write("Execution ID:", execution_id)
-    st.write("Report Hash:", report_hash)
-    st.write(tx)
+        execution_id = str(uuid.uuid4())
 
-    st.subheader("Audit Logs")
-    st.json(logs)
+        tx = store_on_chain(execution_id, report_hash)
 
-    st.subheader("Agent Workflow")
+        st.subheader("Verification")
 
-    st.graphviz_chart("""
+        st.write("Execution ID:", execution_id)
+        st.write("Report Hash:", report_hash)
+        st.write(tx)
+
+        st.subheader("Audit Logs")
+        st.json(logs)
+
+        st.subheader("Agent Workflow")
+
+        st.graphviz_chart("""
     digraph {
     User_Query -> Planner_Agent
     Planner_Agent -> Research_Agent
@@ -73,6 +80,20 @@ if st.button("Run AI Agent"):
 
     st.download_button(
         "Download Certificate",
-        certificate,
-        file_name="ai_execution_certificate.txt"
-    )
+        data=certificate,
+        file_name="ai_execution_certificate.txt")
+    st.subheader("Verify Report on WeilChain")
+
+
+if st.button("Verify Blockchain Hash"):
+    if "report_hash" in st.session_state:
+
+        valid = verify_hash(st.session_state["report_hash"])
+
+        if valid:
+            st.success("Report verified successfully on WeilChain")
+        else:
+            st.error("Verification failed")
+
+    else:
+        st.warning("Please generate a report first")
